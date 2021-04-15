@@ -1,0 +1,11 @@
+[Unit]
+Description=Start the PiCamera
+
+[Service]
+ExecStart=/usr/bin/startpicamera.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

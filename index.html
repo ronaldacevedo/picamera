@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PiCamera</title>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style type="text/css">
+body { background-color: #141010; }
+#title { text-align: center; color: #aaa; }
+#videocontainer { text-align: center; }
+#picamerafeed { border: 2px solid #000; }
+</style>
+</head>
+<body>
+<h1 id="title">PiCamera</h1>
+<div id="videocontainer">
+<video id="picamerafeed">
+<script>
+var feed = document.getElementById("picamerafeed");
+var hls = new Hls();
+hls.attachMedia(feed);
+hls.on(Hls.Events.MEDIA_ATTACHED, function() {
+    hls.loadSource("http://192.168.1.6:8080/playlist.m3u8");
+    });
+feed.defaultMuted = true;
+feed.play();
+</script>
+</div>
+</body>
+</html>
